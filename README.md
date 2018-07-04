@@ -1,4 +1,4 @@
-# redux-form-validators
+# @jcoreio/redux-form-validators
 
 [![Build Status](https://travis-ci.org/jcoreio/redux-form-validators.svg?branch=master)](https://travis-ci.org/jcoreio/redux-form-validators)
 [![Coverage Status](https://codecov.io/gh/jcoreio/redux-form-validators/branch/master/graph/badge.svg)](https://codecov.io/gh/jcoreio/redux-form-validators)
@@ -11,7 +11,7 @@ Fork of redux-form-validators without insane memoization strategy
 
 ## Installation
 ```sh
-npm install --save redux-form-validators
+npm install --save @jcoreio/redux-form-validators
 ```
 
 > Note: For internationalization purposes, this package is compatible with [react-intl](https://github.com/yahoo/react-intl).
@@ -23,7 +23,7 @@ If you're already familiar with [redux-form](http://redux-form.com/) it should b
 ### Field validation
 
 ```js
-import { required, email } from 'redux-form-validators'
+import { required, email } from '@jcoreio/redux-form-validators'
 
 const validateEmail = [required(), email()]
 <Field
@@ -425,7 +425,7 @@ redux-form-validators comes with default options:
 
 But you can easily change them:
 ```js
-import Validators from 'redux-validators'
+import Validators from '@jcoreio/redux-form-validators'
 
 // Override dateFormat & urlProtocols
 Object.assign(Validators.defaultOptions, {
@@ -438,7 +438,7 @@ Object.assign(Validators.defaultOptions, {
 
 By default, all errors messages are in english and are pluralized if needed (basic support) but you can use [react-intl](https://github.com/yahoo/react-intl) to support different languages. All you need to do is to insert the following lines:
 ```js
-import Validators from 'redux-form-validators'
+import Validators from '@jcoreio/redux-form-validators'
 import { FormattedMessage } from 'react-intl'
 
 Validators.formatMessage = function(msg) {
@@ -479,13 +479,13 @@ file({ minSize: '5MB' }) // -> is too small (minimum is 5 Mo)
 file({ minSize: 500 })   // -> is too small (minimum is 500 octets)
 ```
 
-And if you're using [babel-plugin-react-intl](https://github.com/yahoo/babel-plugin-react-intl) to extract your application messages, you'll need to **add** a new plugin entry in your webpack config ([example](https://github.com/gtournie/redux-form-validators/blob/master/webpack/example.js)):
+And if you're using [babel-plugin-react-intl](https://github.com/yahoo/babel-plugin-react-intl) to extract your application messages, you'll need to **add** a new plugin entry in your webpack config:
 ```js
 ["react-intl", {
   "messagesDir": ...,
   "languages": ...,
   // /!\ it's important to keep a relative path here
-  "moduleSourceName": "./redux-form-validators"
+  "moduleSourceName": "./@jcoreio/redux-form-validators"
 }
 ```
 
@@ -522,7 +522,7 @@ Object.assign(Validators.messages, {
 
 > Note: This won't work with react-intl, as you load the messages from a json file
 
-[See all default messages](https://github.com/gtournie/redux-form-validators/blob/master/src/messages.js).
+[See all default messages](https://github.com/jcoreio/redux-form-validators/blob/master/src/messages.js).
 
 
 ### Common validation options
@@ -543,7 +543,7 @@ Not available for: required, absence, acceptance & confirmation.
 
 #### message (alias: msg)
 
-As you've already seen, the `message` option lets you specify the message that will be added to the errors collection when validation fails. When this option is not used, `redux-form-validators` will use the respective default error message for each validator. The `message` option accepts a String, a Hash or a [FormattedMessage](https://github.com/yahoo/react-intl/wiki/Components#string-formatting-components).
+As you've already seen, the `message` option lets you specify the message that will be added to the errors collection when validation fails. When this option is not used, `@jcoreio/redux-form-validators` will use the respective default error message for each validator. The `message` option accepts a String, a Hash or a [FormattedMessage](https://github.com/yahoo/react-intl/wiki/Components#string-formatting-components).
 
 ```js
 format({ with: /^[a-z]+$/i, message: 'Letters only' })
@@ -569,7 +569,7 @@ length({ msg: { tooShort: 'min {count, number} characters' }, min: 2, max: 8 })
 
 > Note: all messages are internally converted into javascript objects (see [i18n and react-intl](#i18n-and-react-intl)), so if you pass a FormattedMessage as an argument, don't expect it to be returned as it.   
 
-[See all default messages](https://github.com/gtournie/redux-form-validators/blob/master/src/messages.js).
+[See all default messages](https://github.com/jcoreio/redux-form-validators/blob/master/src/messages.js).
 
 
 ### Conditional validation
@@ -631,7 +631,7 @@ Signature: `parseDate(dateString, format[, ymd])`
 
 Examples:
 ```js
-import { date } from 'redux-form-validators'
+import { date } from '@jcoreio/redux-form-validators'
 let parseDate = date.parseDate
 
 parseDate('12/31/2017', 'mm/dd/yyyy')        => new Date(2017, 11, 31)
@@ -653,7 +653,7 @@ Signature: `formatDate(date, format[, ymd])`
 
 Examples:
 ```js
-import { date } from 'redux-form-validators'
+import { date } from '@jcoreio/redux-form-validators'
 let formatDate = date.formatDate
 
 formatDate(new Date(2017, 11, 31), 'mm/dd/yyyy')        => '12/31/2017'
