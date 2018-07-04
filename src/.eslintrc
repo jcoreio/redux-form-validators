@@ -1,0 +1,6 @@
+{
+  "globals": {
+      "File": true,
+      "FileList": true
+  }
+}

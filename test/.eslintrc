@@ -1,5 +1,11 @@
 {
   "env": {
-    "mocha": true
+    "mocha": true,
+    "node": true
+  },
+  "globals": {
+    "ValidatorsFormatMessage": true,
+    "File": true,
+    "FileList": true,
   }
 }
