@@ -1,5 +1,5 @@
 {
-  "name": "redux-form-validators",
+  "name": "@jcoreio/redux-form-validators",
   "version": "0.0.0-development",
   "description": "Fork of redux-form-validators without insane memoization strategy",
   "main": "index.js",
